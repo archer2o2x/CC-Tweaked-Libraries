@@ -1,4 +1,4 @@
-local vector = require("vec.lua")
+local vector = require("vec")
 
 -- A library to act as an anchor for the turtle
 -- Helps to track the turtle relative to its origin
@@ -9,7 +9,7 @@ local function forward(self, blocks)
         blocks = 1
     end
 
-    for i = 0, blocks, 1 do
+    for i = 1, blocks, 1 do
         
         while not turtle.forward() do
             
@@ -29,7 +29,7 @@ local function up(self, blocks)
         blocks = 1
     end
 
-    for i = 0, blocks, 1 do
+    for i = 1, blocks, 1 do
         
         while not turtle.up() do
             
@@ -49,7 +49,7 @@ local function down(self, blocks)
         blocks = 1
     end
 
-    for i = 0, blocks, 1 do
+    for i = 1, blocks, 1 do
         
         while not turtle.down() do
             
@@ -79,6 +79,14 @@ local function turnRight(self)
 
 end
 
+local function turnAround(self)
+
+    turtle.turnLeft()
+    turtle.turnLeft()
+
+    self.rot = vector.turnAround(self.rot)
+
+end
 
 local function transform(origin, direction)
 
@@ -100,7 +108,8 @@ local function transform(origin, direction)
         down = down,
 
         turnLeft = turnLeft,
-        turnRight = turnRight
+        turnRight = turnRight,
+        turnAround = turnAround
 
     }
 

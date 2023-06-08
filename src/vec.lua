@@ -62,6 +62,32 @@ local function right(input)
     
 end
 
+local function reverse(input)
+
+    return vec(-input.x, input.y, -input.z)
+
+end
+
+local function distanceEuclidean(a, b)
+
+    return magnitude(sub(a, b))
+
+end
+
+local function distanceManhattan(a, b)
+
+    return manhattan(sub(a, b))
+
+end
+
+local function equals(a, b)
+
+    print(a.x, a.y, a.z, b.x, b.y, b.z)
+
+    return a.x == b.x and a.y == b.y and a.z == b.z
+
+end
+
 return {
 
     vec = vec,
@@ -85,6 +111,12 @@ return {
     manhattan = manhattan,
 
     turnLeft = left,
-    turnLight = right
+    turnRight = right,
+    turnAround = reverse,
+
+    distanceEuclidean = distanceEuclidean,
+    distanceManhattan = distanceManhattan,
+    
+    equals = equals
 
 }
