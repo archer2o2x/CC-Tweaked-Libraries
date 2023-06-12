@@ -1,5 +1,3 @@
 local pastebinLibraries = {
 
-    "vector.lua": ""
-
 }

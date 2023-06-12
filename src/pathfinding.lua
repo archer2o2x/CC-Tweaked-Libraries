@@ -1,5 +1,4 @@
 local vector = require("vec")
-local transform = require("transform")
 
 local function findClosest(origin, nodes)
 
@@ -76,12 +75,29 @@ local function navigateToPos(agent, pos)
 
 end
 
+local function setTransform(agent, pos, rot)
+
+    if pos == nil then
+        pos = vector.zero
+    end
+
+    if rot == nil then
+        rot = vector.forward
+    end
+
+    navigateToPos(agent, navigateToPos)
+    alignWithDirection(agent, rot)
+
+end
+
 return {
 
     findClosest = findClosest,
 
     navigateToPos = navigateToPos,
 
-    alignWithDirection = alignWithDirection
+    alignWithDirection = alignWithDirection,
+
+    setTransform = setTransform
 
 }

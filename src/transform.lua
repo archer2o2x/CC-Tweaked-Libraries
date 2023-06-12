@@ -3,6 +3,25 @@ local vector = require("vec")
 -- A library to act as an anchor for the turtle
 -- Helps to track the turtle relative to its origin
 
+local function refuel(self, desiredLevel)
+
+    for i = 1, 16 do
+        
+        turtle.select(i)
+        local isConsumable = true
+        while isConsumable do
+            isConsumable = turtle.refuel(1)
+            isConsumable = isConsumable and turtle.getFuelLevel() < desiredLevel
+        end
+
+        if turtle.getFuelLevel() >= desiredLevel then
+            return
+        end
+
+    end
+
+end
+
 local function forward(self, blocks)
 
     if blocks == nil then
@@ -109,7 +128,9 @@ local function transform(origin, direction)
 
         turnLeft = turnLeft,
         turnRight = turnRight,
-        turnAround = turnAround
+        turnAround = turnAround,
+
+        refuel = refuel
 
     }
 
