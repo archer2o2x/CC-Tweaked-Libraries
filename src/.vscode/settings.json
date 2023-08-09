@@ -1,6 +1,5 @@
 {
     "Lua.diagnostics.globals": [
-        "turtle",
-        "settings"
+        "turtle"
     ]
 }
